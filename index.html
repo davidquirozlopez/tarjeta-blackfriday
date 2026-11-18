@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Especial Black Friday - maestríanimal</title>
+
+    <!-- Importando fuente Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Cargando Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Configuración de Tailwind con Montserrat y colores de marca -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Cargando Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        /* Eliminar scrollbars dentro del iframe de Bettermode */
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+        /* Destellos sutiles en el fondo */
+        .bg-festive-pattern {
+            background-image: 
+                radial-gradient(circle at 12% 18%, rgba(248, 173, 26, 0.14) 0%, transparent 28%),
+                radial-gradient(circle at 88% 82%, rgba(202, 103, 0, 0.16) 0%, transparent 35%);
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-[#830000] via-[#580028] to-[#25004D] min-h-screen p-4 md:p-8 text-slate-800 antialiased relative overflow-x-hidden">
+    
+    <!-- Capa decorativa sutil (destellos en baja opacidad) -->
+    <div class="fixed inset-0 bg-festive-pattern pointer-events-none z-0"></div>
+
+    <div class="max-w-4xl mx-auto relative z-10">
+        
+        <!-- Encabezado Superior -->
+        <header class="mb-8 flex flex-col lg:flex-row justify-between items-center gap-6">
+            
+            <!-- Título e Identidad -->
+            <div class="text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 mb-2 px-3 py-1 rounded-full bg-white/10 border border-[#F8AD1A]/30 backdrop-blur-sm">
+                    <i data-lucide="sparkles" class="h-3.5 w-3.5 text-[#F8AD1A]"></i>
+                    <span class="text-xs font-semibold tracking-wide text-white/90 lowercase">maestríanimal</span>
+                    <span class="text-white/30">•</span>
+                    <span class="text-[11px] font-bold uppercase tracking-wider text-[#F8AD1A]">Oferta Limitada</span>
+                </div>
+                <h1 class="text-3xl sm:text-4xl font-black text-white tracking-tight flex items-center gap-2.5 justify-center lg:justify-start">
+                    Especial Black Friday
+                </h1>
+            </div>
+
+            <!-- Caja de Cuenta Regresiva -->
+            <div id="countdown-container" class="bg-[#180032]/85 backdrop-blur-md border border-[#F8AD1A]/40 rounded-2xl p-3.5 sm:px-5 shadow-xl w-full sm:w-auto">
+                <div class="flex items-center justify-center gap-1.5 mb-2">
+                    <i data-lucide="clock" class="h-3.5 w-3.5 text-[#F8AD1A]"></i>
+                    <span class="text-[11px] font-bold uppercase tracking-wider text-[#F8AD1A]">
+                        Finaliza el 1 de dic. (23:59 COL)
+                    </span>
+                </div>
+                
+                <!-- Bloques de tiempo -->
+                <div id="countdown-grid" class="grid grid-cols-4 gap-2 text-center">
+                    <div class="bg-white/10 border border-white/10 rounded-xl px-2.5 py-1.5 min-w-[58px]">
+                        <span id="cd-days" class="block text-xl sm:text-2xl font-black text-white leading-none tabular-nums">00</span>
+                        <span class="block text-[10px] font-semibold uppercase tracking-wider text-amber-200/80 mt-1">Días</span>
+                    </div>
+                    <div class="bg-white/10 border border-white/10 rounded-xl px-2.5 py-1.5 min-w-[58px]">
+                        <span id="cd-hours" class="block text-xl sm:text-2xl font-black text-white leading-none tabular-nums">00</span>
+                        <span class="block text-[10px] font-semibold uppercase tracking-wider text-amber-200/80 mt-1">Horas</span>
+                    </div>
+                    <div class="bg-white/10 border border-white/10 rounded-xl px-2.5 py-1.5 min-w-[58px]">
+                        <span id="cd-minutes" class="block text-xl sm:text-2xl font-black text-white leading-none tabular-nums">00</span>
+                        <span class="block text-[10px] font-semibold uppercase tracking-wider text-amber-200/80 mt-1">Min</span>
+                    </div>
+                    <div class="bg-[#F8AD1A]/20 border border-[#F8AD1A]/40 rounded-xl px-2.5 py-1.5 min-w-[58px]">
+                        <span id="cd-seconds" class="block text-xl sm:text-2xl font-black text-[#F8AD1A] leading-none tabular-nums">00</span>
+                        <span class="block text-[10px] font-semibold uppercase tracking-wider text-[#F8AD1A] mt-1">Seg</span>
+                    </div>
+                </div>
+
+                <!-- Mensaje cuando expira la promoción -->
+                <div id="countdown-expired" class="hidden text-center py-2 px-4">
+                    <span class="text-sm font-extrabold uppercase tracking-wider text-[#F8AD1A]">Promoción finalizada</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Grid de Tarjetas Promocionales -->
+        <main class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <!-- TARJETA 1: Destacada Superior - Comunidad Profesional y Maestros -->
+            <section class="col-span-1 md:col-span-2 group relative bg-white rounded-3xl p-6 sm:p-8 shadow-xl border-2 border-[#F8AD1A] overflow-hidden transition-all duration-300 hover:-translate-y-0.5">
+                
+                <!-- Brillo decorativo sutil -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#F8AD1A]/15 via-transparent to-transparent rounded-bl-full pointer-events-none"></div>
+
+                <div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                    <div class="flex-1">
+                        <!-- Cinta estilo afiche: 40% OFF Primer Período -->
+                        <div class="inline-flex flex-wrap items-center gap-2 mb-4">
+                            <span class="bg-gradient-to-r from-[#F8AD1A] to-[#ffbe3b] text-[#25004D] text-xs sm:text-sm font-black uppercase tracking-wider px-3.5 py-1.5 rounded-xl shadow-sm">
+                                40% OFF • PRIMER PAGO
+                            </span>
+                            <span class="text-xs font-bold text-[#830000] bg-[#830000]/10 px-3 py-1.5 rounded-xl">
+                                Planes Mensual, Trimestral y Semestral
+                            </span>
+                        </div>
+
+                        <div class="flex items-start gap-3.5 mb-3">
+                            <div class="w-12 h-12 shrink-0 rounded-2xl bg-[#25004D] text-[#F8AD1A] flex items-center justify-center shadow-md">
+                                <i data-lucide="crown" class="h-6 w-6"></i>
+                            </div>
+                            <div>
+                                <span class="block text-xs font-bold uppercase tracking-wider text-[#ca6700] mb-0.5">
+                                    Membresías de la Comunidad
+                                </span>
+                                <h2 class="text-2xl sm:text-3xl font-extrabold text-[#25004D] leading-tight">
+                                    Comunidad Profesional y Comunidad Maestros
+                                </h2>
+                            </div>
+                        </div>
+
+                        <p class="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl">
+                            Obtén un <strong class="text-slate-900 font-bold">40% de descuento en el primer pago</strong> de los planes <strong class="text-slate-900 font-bold">Mensual, Trimestral o Semestral</strong> al unirte o mejorar tu membresía.
+                        </p>
+                    </div>
+
+                    <!-- Botón de acción principal -->
+                    <div class="shrink-0 flex flex-col items-stretch sm:items-center lg:items-end justify-center">
+                        <a href="https://www.maestrianimal.com/precios-comunidad" target="_blank" rel="noopener noreferrer"
+                           class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#ca6700] via-[#e07b00] to-[#F8AD1A] hover:from-[#830000] hover:to-[#ca6700] text-white font-extrabold text-sm sm:text-base py-4 px-7 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 text-center group/btn">
+                            <span>Ver planes de la Comunidad</span>
+                            <i data-lucide="arrow-up-right" class="h-5 w-5 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TARJETA 2: Abajo Izquierda - Formación en Etología Aplicada en Perros -->
+            <section class="group relative bg-white rounded-3xl p-6 sm:p-7 shadow-lg border border-slate-200/90 hover:border-[#007f91] flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+                
+                <!-- Sello superior derecho 40% OFF -->
+                <div class="absolute top-0 right-0 bg-gradient-to-r from-[#F8AD1A] to-[#ffbe3b] text-[#25004D] text-[11px] font-black uppercase tracking-wider py-1.5 px-4 rounded-bl-2xl shadow-sm">
+                    40% OFF • 1er Pago
+                </div>
+
+                <div>
+                    <!-- Iconos combinados: Perro + Birrete -->
+                    <div class="flex items-center gap-2.5 mb-5">
+                        <div class="w-12 h-12 rounded-2xl bg-[#007f91]/10 text-[#007f91] group-hover:bg-[#007f91] group-hover:text-white transition-colors flex items-center justify-center shadow-sm">
+                            <i data-lucide="dog" class="h-6 w-6"></i>
+                        </div>
+                        <div class="w-9 h-9 rounded-xl bg-slate-100 text-[#007f91] flex items-center justify-center">
+                            <i data-lucide="graduation-cap" class="h-5 w-5"></i>
+                        </div>
+                    </div>
+
+                    <span class="inline-block text-xs font-bold uppercase tracking-wider text-[#007f91] mb-1.5">
+                        Especialidad Canina
+                    </span>
+                    <h3 class="text-xl sm:text-2xl font-extrabold text-slate-800 mb-3 leading-snug group-hover:text-[#007f91] transition-colors">
+                        Formación en Etología Aplicada en Perros
+                    </h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        <strong class="text-slate-800 font-bold">40% de descuento</strong> en el primer pago de los planes <strong class="text-slate-800 font-bold">Mensual, Trimestral o Semestral</strong> para nuevas inscripciones.
+                    </p>
+                </div>
+
+                <!-- Botón de acción Canino -->
+                <div class="mt-6 pt-2">
+                    <a href="https://academia.maestrianimal.com/course/formacion-etologia-perros" target="_blank" rel="noopener noreferrer"
+                       class="w-full inline-flex items-center justify-center gap-2 bg-[#007f91] hover:bg-[#00505b] text-white font-bold text-sm py-3.5 px-5 rounded-xl shadow-sm hover:shadow-md transition-all duration-200">
+                        <span>Ir a Formación Canina</span>
+                        <i data-lucide="external-link" class="h-4 w-4"></i>
+                    </a>
+                </div>
+            </section>
+
+            <!-- TARJETA 3: Abajo Derecha - Formación en Etología Aplicada en Gatos -->
+            <section class="group relative bg-white rounded-3xl p-6 sm:p-7 shadow-lg border border-slate-200/90 hover:border-[#ca6700] flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+                
+                <!-- Sello superior derecho 40% OFF -->
+                <div class="absolute top-0 right-0 bg-gradient-to-r from-[#F8AD1A] to-[#ffbe3b] text-[#25004D] text-[11px] font-black uppercase tracking-wider py-1.5 px-4 rounded-bl-2xl shadow-sm">
+                    40% OFF • 1er Pago
+                </div>
+
+                <div>
+                    <!-- Iconos combinados: Gato + Birrete -->
+                    <div class="flex items-center gap-2.5 mb-5">
+                        <div class="w-12 h-12 rounded-2xl bg-[#ca6700]/10 text-[#ca6700] group-hover:bg-[#ca6700] group-hover:text-white transition-colors flex items-center justify-center shadow-sm">
+                            <i data-lucide="cat" class="h-6 w-6"></i>
+                        </div>
+                        <div class="w-9 h-9 rounded-xl bg-slate-100 text-[#ca6700] flex items-center justify-center">
+                            <i data-lucide="graduation-cap" class="h-5 w-5"></i>
+                        </div>
+                    </div>
+
+                    <span class="inline-block text-xs font-bold uppercase tracking-wider text-[#ca6700] mb-1.5">
+                        Especialidad Felina
+                    </span>
+                    <h3 class="text-xl sm:text-2xl font-extrabold text-slate-800 mb-3 leading-snug group-hover:text-[#ca6700] transition-colors">
+                        Formación en Etología Aplicada en Gatos
+                    </h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        <strong class="text-slate-800 font-bold">40% de descuento</strong> en el primer pago de los planes <strong class="text-slate-800 font-bold">Mensual, Trimestral o Semestral</strong> para nuevas inscripciones.
+                    </p>
+                </div>
+
+                <!-- Botón de acción Felino -->
+                <div class="mt-6 pt-2">
+                    <a href="https://academia.maestrianimal.com/course/formacion-etologia-gatos" target="_blank" rel="noopener noreferrer"
+                       class="w-full inline-flex items-center justify-center gap-2 bg-[#ca6700] hover:bg-[#a85500] text-white font-bold text-sm py-3.5 px-5 rounded-xl shadow-sm hover:shadow-md transition-all duration-200">
+                        <span>Ir a Formación Felina</span>
+                        <i data-lucide="external-link" class="h-4 w-4"></i>
+                    </a>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Scripts de inicialización de iconos y cuenta regresiva -->
+    <script>
+        // Renderizar iconos de Lucide
+        lucide.createIcons();
+
+        // Configuración de la Cuenta Regresiva: 1 de diciembre de 2026 a las 23:59:59 hora de Colombia (UTC-5)
+        (function initCountdown() {
+            const targetDate = new Date('2026-12-01T23:59:59-05:00').getTime();
+
+            const daysEl = document.getElementById('cd-days');
+            const hoursEl = document.getElementById('cd-hours');
+            const minutesEl = document.getElementById('cd-minutes');
+            const secondsEl = document.getElementById('cd-seconds');
+            const gridEl = document.getElementById('countdown-grid');
+            const expiredEl = document.getElementById('countdown-expired');
+
+            function padZero(num) {
+                return String(num).padStart(2, '0');
+            }
+
+            function updateTimer() {
+                const now = Date.now();
+                const distance = targetDate - now;
+
+                if (distance <= 0) {
+                    gridEl.classList.add('hidden');
+                    expiredEl.classList.remove('hidden');
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                daysEl.textContent = padZero(days);
+                hoursEl.textContent = padZero(hours);
+                minutesEl.textContent = padZero(minutes);
+                secondsEl.textContent = padZero(seconds);
+            }
+
+            updateTimer();
+            setInterval(updateTimer, 1000);
+        })();
+    </script>
+</body>
+</html>
